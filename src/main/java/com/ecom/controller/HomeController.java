@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.ecom.model.Category;
 import com.ecom.model.Product;
-import com.ecom.model.UserDetails;
+import com.ecom.model.UserDtls;
 import com.ecom.service.CategoryService;
 import com.ecom.service.ProductService;
 import com.ecom.service.UserService;
@@ -31,6 +32,21 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class HomeController {
+	
+	
+	@ModelAttribute
+	public void getUserDetails(Principal p, Model m)
+	{
+		if(p!=null)
+		{
+			String email = p.getName();
+			UserDtls userDtls = userService.getUserByEmail(email);
+			m.addAttribute("user", userDtls) ;
+		}
+		List<Category> allActiveCategory = categoryService.getAllActiveCategory();
+		m.addAttribute("categorys", allActiveCategory);
+	}
+	
 	@Autowired
 	private	CategoryService categoryService;
 	
@@ -81,12 +97,12 @@ public class HomeController {
 	}
 	
 	@PostMapping("/saveUser")
-	public String saveUser(@ModelAttribute UserDetails user, @RequestParam("img") MultipartFile file , HttpSession session) throws IOException
+	public String saveUser(@ModelAttribute UserDtls user, @RequestParam("img") MultipartFile file , HttpSession session) throws IOException
 	{
 		String imageName = file.isEmpty() ? "default.jpg" : file.getOriginalFilename();
-		user.setProfileImage(imageName);
-		userService.saveUser(user);
-		UserDetails saveUser = userService.saveUser(user);
+//		user.setProfileImage(imageName);
+//		userService.saveUser(user);
+		UserDtls saveUser = userService.saveUser(user);
 		
 		if(!ObjectUtils.isEmpty(saveUser))
 		{
@@ -107,4 +123,14 @@ public class HomeController {
 		
 		return "redirect:/register";
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

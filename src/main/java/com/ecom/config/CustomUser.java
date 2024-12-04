@@ -1,6 +1,7 @@
 package com.ecom.config;
 
-import com.ecom.model.UserDetails;
+
+import com.ecom.model.UserDtls;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -11,9 +12,9 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 public class CustomUser implements org.springframework.security.core.userdetails.UserDetails {
 
-	private UserDetails user;
+	private UserDtls user;
 
-	public CustomUser(UserDetails user) {
+	public CustomUser(UserDtls user) {
 		super();
 		this.user= user;
 	}
@@ -52,7 +53,7 @@ public class CustomUser implements org.springframework.security.core.userdetails
 	
 	@Override
 	public boolean isEnabled() {
-		return true;
+		return user.getIsEnable();
 	}
 	
 	

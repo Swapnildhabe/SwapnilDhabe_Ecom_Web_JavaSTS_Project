@@ -22,7 +22,6 @@
 								<p class="text-danger fw-bold">[[${session.errorMsg}]]</p>
 								<th:block th:text="${@commonServiceImpl.removeSessionMessage()}"></th:block>
 							</th:block>
-
 						</div>
 						<div class="card-body">
 							<form action="/admin/saveCategory" method="post"
@@ -31,7 +30,6 @@
 									<label>Enter Category</label> <input type="text" name="name"
 										class="form-control">
 								</div>
-
 								<div class="mb-3">
 									<label>Status </label>
 									<div class="form-check">
@@ -45,14 +43,12 @@
 											class="form-check-label" for="flexRadioDefault2">Inactive</label>
 									</div>
 								</div>
-
 								<div class="mb-3">
 									<label>Upload Image</label> <input type="file" name="file"
 										class="form-control">
 								</div>
 								<button class="btn btn-primary col-md-12 mt-2">Save</button>
 							</form>
-
 						</div>
 					</div>
 				</div>
@@ -88,18 +84,13 @@
 											class="btn btn-danger btn-sm"><i
 												class="fa-solid fa-trash  fa-1x"></i> Delete</a></td>
 									</tr>
-
-
 								</tbody>
 							</table>
 						</div>
 					</div>
-
 				</div>
-
 			</div>
 		</div>
-
 	</section>
 </body>
 </html>

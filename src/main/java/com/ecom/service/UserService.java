@@ -2,9 +2,25 @@ package com.ecom.service;
 
 
 
-import com.ecom.model.UserDetails;
+import java.util.List;
+
+import com.ecom.model.UserDtls;
 
 public interface UserService {
 	
-	public UserDetails saveUser(UserDetails user);
+	public UserDtls saveUser(UserDtls user);
+	
+	public UserDtls getUserByEmail(String email);
+	
+	public List<UserDtls> getUsers(String role);
+
+	public Boolean updateAccountStatus(Integer id, Boolean status);
+	
+	public void increaseFailAttempt(UserDtls user);
+	
+	public void UserAccountLock(UserDtls user);
+	
+	public boolean unlockAccountTimeExpired(UserDtls user);
+	
+	public void resetAttepmt(int userId);
 }

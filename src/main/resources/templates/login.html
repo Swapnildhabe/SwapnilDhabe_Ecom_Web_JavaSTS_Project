@@ -17,9 +17,12 @@
 					<div class="card shadow p-3 mb-5 bg-body rounded">
 						<div class="card-header">
 							<p class="fs-4 text-center">Login</p>
+							<div th:if="${param.error}" class="alert alert-danger text-center"> [[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</div>
+									<div th:if="${param.logout}" class="alert alert-success text-center"> Logout Successfully </div>
 						</div>
+									
 						<div class="card-body">
-							<form action="/login" method="post">
+							<form action="/login" method="post"> 
 								<div class="mb-3">
 									<label class="form-label">Email</label> <input
 										class="form-control" name="username" type="email">
@@ -31,6 +34,7 @@
 								</div>
 								<button type="submit"
 									class="btn bg-primary text-white col-md-12">Login</button>
+						
 							</form>
 						</div>
 						<div class="card-footer text-center">
