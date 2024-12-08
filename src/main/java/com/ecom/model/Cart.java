@@ -23,14 +23,24 @@ public class Cart {
 	
 	@Transient
 	private Double totalPrice;
+	
+	@Transient
+	private double totalOrderPrice;
+				   
+	
+	
 
-	public Cart(Integer id, UserDtls user, Product product, Integer quantity, Double totalPrice) {
+	
+
+	public Cart(Integer id, UserDtls user, Product product, Integer quantity, Double totalPrice,
+			double totalOrderPrice) {
 		super();
 		this.id = id;
 		this.user = user;
 		this.product = product;
 		this.quantity = quantity;
 		this.totalPrice = totalPrice;
+		this.totalOrderPrice = totalOrderPrice;
 	}
 
 	public Integer getId() {
@@ -72,12 +82,21 @@ public class Cart {
 	public void setTotalPrice(Double totalPrice) {
 		this.totalPrice = totalPrice;
 	}
+	
+	
+
+	public double getTotalOrderPrice() {
+		return totalOrderPrice;
+	}
+
+	public void setTotalOrderPrice(double totalOrderPrice) {
+		this.totalOrderPrice = totalOrderPrice;
+	}
 
 	public Cart() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-	
+	  
 	
 	
 	
